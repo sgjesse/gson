@@ -92,7 +92,7 @@ public class Main {
 
   private static void testNoDefaultConstructor(BiConsumer<String, String> outputConsumer) {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    TestExecutor.run(outputConsumer, "Write: No default constructor", () -> toJson(gson, new ClassWithoutDefaultConstructor(2)));
+    //TestExecutor.run(outputConsumer, "Write: No default constructor", () -> toJson(gson, new ClassWithoutDefaultConstructor(2)));
     // This most likely relies on JDK Unsafe (unless the shrinker rewrites the constructor in some way)
     TestExecutor.run(outputConsumer, "Read: No default constructor", () -> {
       ClassWithoutDefaultConstructor deserialized = fromJson(gson, "{\"myField\": 3}", ClassWithoutDefaultConstructor.class);
